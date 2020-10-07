@@ -54,12 +54,29 @@ JOIN isikud ON partiid.valge = isikud.id
 GROUP BY eesnimi HAVING eesnimi = 'Arvo'
 
 /*
+Leida kõigi Arvode poolt kokku valgetega mängitud partiide arv turniiride lõikes
+(turniiri id ja partiide arv).
 */
 SELECT turniirid.Id, count(*)
-FROM turniirid INNER JOIN partiid
-ON partiid.turniir = turniirid.id INNER JOIN isikud
+FROM turniirid JOIN partiid
+ON partiid.turniir = turniirid.id JOIN isikud
 ON isikud.id = partiid.valge WHERE eesnimi = 'Arvo' GROUP BY turniirid.Id  ORDER BY turniirid.Id
 
 /*
+Leida kõigi Mariade poolt kokku mustadega mängitud partiidest saadud punktide arv
+(tulemus = 2 on võit ja annab ühe punkti, tulemus = 1 on viik ja annab pool punkti)
+*/
 
+-- Leida Mariad from ISIKUD
+-- Leida partiidest mustad kus mustad = Maria.id
+-- leida SUM(musta_tulemus)
+
+SELECT SUM(musta_tulemus) FROM partiid
+JOIN isikud ON isikud.id = partiid.mustad
+
+
+
+/*
+Leida partiide keskmine kestvus turniiride kaupa (tulemuseks on tabel 2 veeruga:
+turniiri nimi, keskmine partii pikkus).
 */
