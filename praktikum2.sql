@@ -71,10 +71,9 @@ Leida kõigi Mariade poolt kokku mustadega mängitud partiidest saadud punktide 
 -- Leida partiidest mustad kus mustad = Maria.id
 -- leida SUM(musta_tulemus)
 
-SELECT SUM(musta_tulemus) FROM partiid
-JOIN isikud ON isikud.id = partiid.mustad
-
-
+SELECT SUM(musta_tulemus)/2 FROM partiid
+JOIN isikud ON isikud.id = partiid.must
+WHERE eesnimi = 'Maria'
 
 /*
 Leida partiide keskmine kestvus turniiride kaupa (tulemuseks on tabel 2 veeruga:
