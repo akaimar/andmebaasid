@@ -79,3 +79,7 @@ WHERE eesnimi = 'Maria'
 Leida partiide keskmine kestvus turniiride kaupa (tulemuseks on tabel 2 veeruga:
 turniiri nimi, keskmine partii pikkus).
 */
+
+SELECT turniirid.nimi AS turniiri_nimi, * AVG(partiid.lopphetk - partiid.algushetk) AS keskmine_partii_pikkus FROM partiid
+JOIN turniirid ON turniirid.id = partiid.turniir 
+
