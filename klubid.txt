@@ -1,0 +1,7 @@
+id,nimi,asukoht
+51,'Laudnikud','Tartu'
+54,'Ajurebend','Tartu'
+55,'Ruudu Liine','Tartu'
+57,'Võitmatu Valge','Tartu'
+58,'Valge Mask','Tartu'
+59,'Musta kivi kummardajad','Tartu'
