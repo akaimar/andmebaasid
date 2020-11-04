@@ -26,4 +26,18 @@ BEGIN
 END
                                                             
 SELECT f_nimi('Aimar','Roosalu')
-    
+                                                            
+/* Luua funktsioon ühe mängija partiide koguarv f_mangija_koormus(id) */
+
+CREATE FUNCTION f_mangija_koormus(mangija_id INTEGER)
+    RETURNS INTEGER
+BEGIN
+    DECLARE tulemus INTEGER;
+        SELECT count(*) INTO tulemus
+        FROM partiid 
+        WHERE partiid.valge = mangija_id OR must = mangija_id;
+        RETURN tulemus;
+END 
+
+SELECT f_mangija_koormus(80)
+
