@@ -61,14 +61,14 @@ INPUT INTO Institutes FROM 'Users/roosalu/Documents/OneDrive/KOOL/ANDMEBAASID/ed
 ASCII DELIMITED BY '\x09';
 
 /*Person tabeli kirje kustutamisel kustutatakse tema registreeringud
-ainetele*
+ainetele*/
 
 ALTER TABLE Registrations ADD CONSTRAINT
 fk_registration_person FOREIGN KEY (PersonId)
 REFERENCES Persons (Id) ON DELETE
 CASCADE ON UPDATE CASCADE; 
 
-/*Dekaani kirje kustutamisel ei kustutata tema teaduskonda*/
+/*Dekaani kirje kustutamisel ei kustutata tema teaduskonda */
 
 ALTER TABLE Institutes ADD CONSTRAINT
 fk_institute_person_dean FOREIGN KEY (DeanId)
@@ -78,12 +78,36 @@ SET NULL ON UPDATE CASCADE;
 /*Luua lisaks näidetele kuus välisvõtit nii, et
 ülemtabeli kirje kustutamisel kustutatakse ka
 alamtabeli vastavad kirjed, va kahel
-erandjuhul, kui seos tühistatakse:*
+erandjuhul, kui seos tühistatakse:*/
 
 ALTER TABLE Registrations ADD CONSTRAINT
 fk_registration_course FOREIGN KEY (CourseId)
 REFERENCES Courses (Id) ON DELETE
 CASCADE ON UPDATE CASCADE;
 
-
-
+ALTER TABLE Lecturers ADD CONSTRAINT
+fk_lecturer_person FOREIGN KEY (CourseId)
+REFERENCES Courses (Id) ON DELETE
+SET NULL ON UPDATE CASCADE;
+                  
+ALTER TABLE Lecturers ADD CONSTRAINT
+fk_lecturer_course FOREIGN KEY (CourseId)
+REFERENCES Courses (Id) ON DELETE 
+SET NULL ON UPDATE CASCADE
+                  
+ALTER TABLE Courses ADD CONSTRAINT
+fk_course_institute FOREIGN KEY (InstituteId)
+REFERENCES Institutes (Id) ON DELETE
+CASCADE ON UPDATE CASCADE;
+                  
+ALTER TABLE Institutes ADD CONSTRAINT
+fk_institute_person_vice_dean FOREIGN KEY (ViceDeanId)
+REFERENCES Persons (Id) ON DELETE 
+SET NULL ON UPDATE CASCADE;
+                  
+ALTER TABLE Persons ADD CONSTRAINT
+fk_person_institute FOREIGN KEY (InstituteId)
+REFERENCES Institutes (Id) ON DELETE
+CASCADE ON UPDATE CASCADE;
+                  
+                  
