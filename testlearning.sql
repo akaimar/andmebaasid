@@ -28,3 +28,9 @@ WHERE musta_tulemus = 2
 GROUP BY must
 HAVING count(musta_tulemus) = 1
 
+/*maksimaalseid punkte edetabelis*/
+
+select mangija, max(punkte) from v_edetabelid
+where turniir = 42 group by mangija
+
+
