@@ -10,6 +10,7 @@ GO;
 exec testime @id = 41
 
 /*funktsioon*/
+
 CREATE FUNCTION teemidagi(sisend1 integer) 
 RETURNS VARCHAR(100)
 NOT DETERMINISTIC 
@@ -21,6 +22,7 @@ END;
 
 
 /*group by having - kus tabelis tuleb mängijad, kes on võitnud ainult ühe mängu*/
+
 SELECT must, count(*) FROM partiid 
 WHERE musta_tulemus = 2
 GROUP BY must
