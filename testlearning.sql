@@ -30,7 +30,7 @@ HAVING count(musta_tulemus) = 1
 
 /*maksimaalseid punkte edetabelis*/
 
-select mangija, max(punkte) from v_edetabelid
-where turniir = 42 group by mangija
+SELECT mangija, max(punkte) FROM v_edetabelid
+WHERE turniir = 42 GROUP BY mangija
 
 
